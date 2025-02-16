@@ -15,13 +15,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         {children}
-        {/* <canvas id="starfield"></canvas> */}
-        {/* <script src="/script.js"></script> */}
-        <Script src="/script.js" strategy="afterInteractive" />
       </body>
     </html>
   );

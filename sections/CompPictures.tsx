@@ -86,7 +86,7 @@ const CompPictures = () => {
 
                 {/* Multi-Image Carousel Container */}
                 <div className="relative w-full">
-                    <div className="overflow-hidden">
+                    <div className="overflow-hidden pb-6">
                         <motion.div
                             className="flex gap-6"
                             animate={{
@@ -129,7 +129,7 @@ const CompPictures = () => {
                     </div>
 
                     {/* Navigation Buttons */}
-                    <div className="absolute -left-6 -right-6 top-1/2 flex -translate-y-1/2 justify-between">
+                    <div className="absolute -left-6 -right-6 top-1/2 bottom-12 flex -translate-y-1/2 justify-between">
                         <button
                             onClick={handlePrevious}
                             disabled={currentIndex === 0}
@@ -145,21 +145,23 @@ const CompPictures = () => {
                             <ChevronRightIcon className="h-6 w-6 text-gray-800" />
                         </button>
                     </div>
+
+                    {/* Dots Navigation */}
+                    <div className="absolute bottom-0 left-1/2 flex -translate-x-1/2 gap-2">
+                        {images.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => setCurrentIndex(index)}
+                                className={`h-2 w-2 rounded-full transition-all ${index === currentIndex
+                                    ? "bg-black w-6"
+                                    : "bg-black/50"
+                                    }`}
+                            />
+                        ))}
+                    </div>
                 </div>
 
-                {/* Dots Navigation */}
-                <div className="absolute bottom-6 left-1/2 flex -translate-x-1/2 gap-2">
-                    {images.map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => setCurrentIndex(index)}
-                            className={`h-2 w-2 rounded-full transition-all ${index === currentIndex
-                                ? "bg-black w-6"
-                                : "bg-black/50"
-                                }`}
-                        />
-                    ))}
-                </div>
+
             </div>
 
 

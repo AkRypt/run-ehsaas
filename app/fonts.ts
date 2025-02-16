@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono, Mrs_Saint_Delafield, Bonheur_Royale } from "next/font/google";
+import { Geist, Geist_Mono, Mrs_Saint_Delafield, Bonheur_Royale, Borel, Yellowtail, Sedgwick_Ave_Display } from "next/font/google";
 
 export const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -18,6 +18,24 @@ export const mrsSaintDelafield = Mrs_Saint_Delafield({
 
 export const bonheurRoyale = Bonheur_Royale({
     variable: "--font-bonheur-royale",
+    subsets: ["latin"],
+    weight: "400",
+});
+
+export const borel = Borel({
+    variable: "--font-borel",
+    subsets: ["latin"],
+    weight: "400",
+});
+
+export const yellowtail = Yellowtail({
+    variable: "--font-yellowtail",
+    subsets: ["latin"],
+    weight: "400",
+});
+
+export const sedgwickAveDisplay = Sedgwick_Ave_Display({
+    variable: "--font-sedgwick-ave-display",
     subsets: ["latin"],
     weight: "400",
 });
