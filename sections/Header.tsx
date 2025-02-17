@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 const Header = () => {
     const [isTransparent, setIsTransparent] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const currentPath = window.location.pathname;
@@ -14,21 +15,82 @@ const Header = () => {
         } else {
             setIsTransparent(false);
         }
-    }, [])
+    }, []);
+
+    // Close mobile menu when clicking outside
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    }, [isMobileMenuOpen]);
+
+    const navLinks = [
+        { href: "/#about", text: "About" },
+        { href: "/members", text: "Members" },
+        { href: "/calendar", text: "Calendar" },
+        { href: "/performances", text: "Performances" },
+        { href: "/gallery", text: "Gallery" },
+        { href: "#contact", text: "Contact" },
+    ];
+
     return (
         <header className={`absolute w-full ${isTransparent ? "bg-transparent" : "bg-neutral"} top-0 right-0 z-50 px-8 py-6`}>
+            {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center justify-end space-x-12">
-                <Link href="/#about" className="text-white/90 hover:text-white transition-colors text-lg">About</Link>
-                <Link href="/members" className="text-white/90 hover:text-white transition-colors text-lg">Members</Link>
-                <Link href="/calendar" className="text-white/90 hover:text-white transition-colors text-lg">Calendar</Link>
-                <Link href="/performances" className="text-white/90 hover:text-white transition-colors text-lg">Performances</Link>
-                <Link href="/gallery" className="text-white/90 hover:text-white transition-colors text-lg">Gallery</Link>
-                <Link href="#contact" className="text-white/90 hover:text-white transition-colors text-lg">Contact</Link>
+                {navLinks.map((link) => (
+                    <Link 
+                        key={link.text}
+                        href={link.href} 
+                        className="text-white/90 hover:text-white transition-colors text-lg"
+                    >
+                        {link.text}
+                    </Link>
+                ))}
+            </nav>
+
+            {/* Mobile Hamburger Button */}
+            <button 
+                className="md:hidden fixed top-8 right-8 z-50 w-10 h-10 bg-neutral flex flex-col justify-center items-center gap-1.5"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+                <span className={`w-6 h-0.5 bg-white transition-all ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                <span className={`w-6 h-0.5 bg-white transition-all ${isMobileMenuOpen ? 'opacity-0' : ''}`} />
+                <span className={`w-6 h-0.5 bg-white transition-all ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+            </button>
+
+            {/* Mobile Menu Overlay */}
+            <div 
+                className={`fixed inset-0 bg-black/50 z-40 md:hidden transition-opacity ${
+                    isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                }`}
+                onClick={() => setIsMobileMenuOpen(false)}
+            />
+
+            {/* Mobile Menu */}
+            <nav 
+                className={`fixed top-0 right-0 h-full w-64 bg-neutral z-40 md:hidden transform transition-transform duration-300 ease-in-out ${
+                    isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+                }`}
+            >
+                <div className="flex flex-col pt-24 px-6 space-y-6">
+                    {navLinks.map((link) => (
+                        <Link 
+                            key={link.text}
+                            href={link.href} 
+                            className="text-white/90 hover:text-white transition-colors text-lg"
+                            onClick={() => setIsMobileMenuOpen(false)}
+                        >
+                            {link.text}
+                        </Link>
+                    ))}
+                </div>
             </nav>
 
             <Logo />
         </header>
-    )
-}
+    );
+};
 
 export default Header;

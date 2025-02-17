@@ -63,8 +63,8 @@ const Calendar = () => {
                 />
             )}
 
-            <div className="max-w-[60%] mx-auto mt-20 px-4">
-                <div className="bg-white rounded-3xl shadow-xl p-8">
+            <div className="md:max-w-[60%] mx-auto mt-20 px-4">
+                <div className="bg-white rounded-3xl md:shadow-xl md:p-8">
                     {/* Month Navigation */}
                     <div className="flex justify-between items-center mb-8">
                         <h2 className="text-3xl font-bold text-gray-800">
@@ -129,10 +129,6 @@ const Calendar = () => {
                                                             title: event.title
                                                         })}
                                                     />
-                                                    {/* <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 
-                                                                text-white text-xs p-1 rounded-b-lg">
-                                                        {event.title}
-                                                    </div> */}
                                                 </div>
                                             );
                                         }
