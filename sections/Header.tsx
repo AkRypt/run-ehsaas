@@ -5,15 +5,15 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const Header = () => {
-    const [isTransparent, setIsTransparent] = useState(false);
+    const [isHomePage, setisHomePage] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const currentPath = window.location.pathname;
         if (currentPath === "/") {
-            setIsTransparent(true);
+            setisHomePage(true);
         } else {
-            setIsTransparent(false);
+            setisHomePage(false);
         }
     }, []);
 
@@ -36,13 +36,13 @@ const Header = () => {
     ];
 
     return (
-        <header className={`absolute w-full ${isTransparent ? "bg-transparent" : "bg-neutral"} top-0 right-0 z-50 px-8 py-6`}>
+        <header className={`absolute w-full ${isHomePage ? "bg-transparent" : "bg-neutral"} top-0 right-0 z-50 px-8 py-6`}>
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center justify-end space-x-12">
                 {navLinks.map((link) => (
-                    <Link 
+                    <Link
                         key={link.text}
-                        href={link.href} 
+                        href={link.href}
                         className="text-white/90 hover:text-white transition-colors text-lg"
                     >
                         {link.text}
@@ -51,7 +51,7 @@ const Header = () => {
             </nav>
 
             {/* Mobile Hamburger Button */}
-            <button 
+            <button
                 className="md:hidden fixed top-8 right-8 z-50 w-10 h-10 bg-neutral flex flex-col justify-center items-center gap-1.5"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
@@ -61,24 +61,22 @@ const Header = () => {
             </button>
 
             {/* Mobile Menu Overlay */}
-            <div 
-                className={`fixed inset-0 bg-black/50 z-40 md:hidden transition-opacity ${
-                    isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                }`}
+            <div
+                className={`fixed inset-0 bg-black/50 z-40 md:hidden transition-opacity ${isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+                    }`}
                 onClick={() => setIsMobileMenuOpen(false)}
             />
 
             {/* Mobile Menu */}
-            <nav 
-                className={`fixed top-0 right-0 h-full w-64 bg-neutral z-40 md:hidden transform transition-transform duration-300 ease-in-out ${
-                    isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
-                }`}
+            <nav
+                className={`fixed top-0 right-0 h-full w-64 bg-neutral z-40 md:hidden transform transition-transform duration-300 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+                    }`}
             >
                 <div className="flex flex-col pt-24 px-6 space-y-6">
                     {navLinks.map((link) => (
-                        <Link 
+                        <Link
                             key={link.text}
-                            href={link.href} 
+                            href={link.href}
                             className="text-white/90 hover:text-white transition-colors text-lg"
                             onClick={() => setIsMobileMenuOpen(false)}
                         >
@@ -88,7 +86,12 @@ const Header = () => {
                 </div>
             </nav>
 
-            <Logo />
+            <Link href="/" className={`w-[50%] md:w-[20%] h-[100%] md:h-[80%] flex justify-center items-center overflow-hidden absolute top-8 left-0 md:top-2 md:left-0 group`}>
+                <Logo />
+            </Link>
+
+
+            {/* <Logo /> */}
         </header>
     );
 };
