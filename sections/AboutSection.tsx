@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 const AboutSection = () => {
 
   return (
-    <section className="py-14 px-8 md:p-24">
+    <section id="about" className="py-14 px-8 md:p-24">
 
 
       {/* Content Grid */}

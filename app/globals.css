@@ -19,3 +19,99 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes neon-wave {
+  0% {
+    background-position: 200% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.bg-neon-gradient {
+  background: linear-gradient(45deg,
+      rgba(255, 0, 128, 0.5),
+      /* Hot pink */
+      /* rgba(64, 224, 208, 0.5), */
+      /* Turquoise */
+      rgba(189, 5, 245, 0.5),
+      /* Purple */
+      rgba(128, 0, 255, 0.5),
+      /* Deep Purple */
+      rgba(255, 0, 128, 0.5),
+      /* Hot pink again */
+      /* rgba(64, 224, 208, 0.5), */
+      /* Turquoise again */
+      rgba(189, 5, 245, 0.5),
+      /* Purple again */
+      rgba(128, 0, 255, 0.5),
+      /* Deep Purple again */
+      rgba(255, 0, 128, 0.5)
+      /* Hot pink final to make seamless */
+    );
+  background-size: 400% 100%;
+  filter: blur(7px);
+  animation: neon-wave 8s linear infinite;
+}
+
+/* Optional: Speed up animation on hover */
+.group:hover .bg-neon-gradient {
+  animation-duration: 2s;
+}
+
+/* Add glow effect */
+.group::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: inherit;
+  filter: blur(20px);
+  opacity: 0.3;
+  z-index: -1;
+}
+
+/* @keyframes neon-wave {
+  0% {
+      transform: rotate(0deg) scale(1);
+      background-position: 0% 50%;
+  }
+  50% {
+      transform: rotate(180deg) scale(1.05);
+      background-position: 100% 50%;
+  }
+  100% {
+      transform: rotate(360deg) scale(1);
+      background-position: 0% 50%;
+  }
+}
+
+.bg-neon-gradient {
+  background: linear-gradient(
+      45deg,
+      rgba(255, 0, 128, 0.5),  /* Hot pink 
+      rgba(64, 224, 208, 0.5),  /* Turquoise 
+      rgba(189, 5, 245, 0.5),   /* Orange 
+      rgba(128, 0, 255, 0.5)    /* Purple 
+  );
+  background-size: 200% 200%;
+  filter: blur(12px);
+  animation: neon-wave 8s ease infinite;
+}
+
+/* Optional: Speed up animation on hover 
+.group:hover .bg-neon-gradient {
+  animation-duration: 6s;
+}
+
+/* Add glow effect 
+.group::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: inherit;
+  filter: blur(20px);
+  opacity: 0.3;
+  z-index: -1;
+} */
