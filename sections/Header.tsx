@@ -36,7 +36,7 @@ const Header = () => {
     ];
 
     return (
-        <header className={`absolute w-full ${isHomePage ? "bg-transparent" : "bg-neutral"} top-0 right-0 z-50 px-8 py-6`}>
+        <header className={`relative w-full ${isHomePage ? "bg-transparent" : "bg-neutral"} top-0 right-0 z-50 px-8 py-6`}>
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center justify-end space-x-12">
                 {navLinks.map((link) => (
@@ -86,7 +86,9 @@ const Header = () => {
                 </div>
             </nav>
 
-            <Link href="/" className={`w-[50%] md:w-[20%] h-[100%] md:h-[80%] flex justify-center items-center overflow-hidden absolute top-8 left-0 md:top-2 md:left-0 group`}>
+            <Link href="/" 
+            className={`w-[50%] md:w-[20%] h-[100%] md:h-[80%] flex justify-center items-center overflow-hidden absolute top-8 left-0 md:top-2 md:left-0 group`}
+            >
                 <Logo />
             </Link>
 
