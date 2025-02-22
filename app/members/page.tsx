@@ -10,7 +10,7 @@ import EBoardCard from "./components/EBoardCard";
 const eboard = [
   {
     name: "Simran Dabas",
-    position: "Captain",
+    position: "Co-Captain",
     image: "/images/simran.jpg",
     school: "Rutgers"
   },
@@ -22,31 +22,31 @@ const eboard = [
   },
   {
     name: "Joshua Kanattu",
-    position: "Co-Captain",
+    position: "Secretary",
     image: "/images/simran.jpg",
     school: "Rutgers"
   },
   {
     name: "Rishika Vadi",
-    position: "Co-Captain",
+    position: "VP & Treasurer",
     image: "/images/simran.jpg",
     school: "Rutgers"
   },
   {
     name: "Shrima Patel",
-    position: "Co-Captain",
+    position: "Production Chair",
     image: "/images/simran.jpg",
     school: "Rutgers"
   },
   {
     name: "Tanisha Verma",
-    position: "Co-Captain",
+    position: "PR Head",
     image: "/images/simran.jpg",
     school: "Rutgers"
   },
   {
     name: "Nila K",
-    position: "Co-Captain",
+    position: "Technical Chair",
     image: "/images/simran.jpg",
     school: "Rutgers"
   }
@@ -82,24 +82,24 @@ const Members = () => {
         {/* <div className="max-w-7xl mx-auto mt-20"> */}
         <div className="flex flex-col items-center justify-center">
           {/* Top row - Captains */}
-          <div className="flex justify-center gap-12 max-w-[50%] mb-40">
+          <div className="flex justify-center gap-12 px-2 md:max-w-[50%] mb-40">
             {eboard.slice(0, 2).map((member, index) => (
               <CaptainCard key={index} member={member} />
             ))}
           </div>
 
           {/* Bottom rows - Other E-board members in hexagonal layout */}
-          <div className="grid grid-cols-3 gap-20 max-w-[70%] mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-20 space-y-10 px-2 md:max-w-[70%] mx-auto">
             {eboard.slice(2).map((member, index) => (
               <motion.div
                 key={member.name}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0,  }}
                 animate={{
                   opacity: 1,
-                  y: [1, 4].includes(index) ? -30 : 0 // Middle card elevated
+                  // y: [1, 4].includes(index) ? -30 : 0 // Middle card elevated
                 }}
                 transition={{ delay: (index + 2) * 0.2 }}
-                className={`relative group ${index === 1 || index === 4 ? 'translate-y-12' : ''}`}
+                // className={`relative group ${index === 1 || index === 4 ? 'md:translate-y-12' : ''}`}
               >
                 <EBoardCard member={member} />
               </motion.div>

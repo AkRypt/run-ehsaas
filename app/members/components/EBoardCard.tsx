@@ -6,7 +6,7 @@ const EBoardCard = ({ member }: { member: any }) => {
             {/* School Badge */}
             <div className="absolute -top-4 -left-4 z-10">
                 <div className="px-4 py-1.5 bg-red-500 rounded border-4 shadow-xl">
-                    <span className="text-2xl text-white">{member.school}</span>
+                    <span className="text-md md:text-2xl text-white">{member.school}</span>
                 </div>
             </div>
 
@@ -20,16 +20,15 @@ const EBoardCard = ({ member }: { member: any }) => {
             </div>
 
             {/* Info Card */}
-            <div className={`absolute -left-4 -right-4 -bottom-2 pb-1 tracking-widest`}>
-                <div className="bg-red-500 rounded-full px-4 py-1 border-4 border-yellow-500">
-                    <h3 className="text-2xl px-4 text-white">
+            <div className={`absolute -left-4 -right-4 -bottom- pb-1 tracking-widest`}>
+                <div className="bg-red-500 rounded-full px-2 md:px-4 py-1 border-4 border-yellow-500">
+                    <h3 className="text-md md:text-2xl px-1 text-white">
                         {member.name}
                     </h3>
                 </div>
                 <div className="absolute -bottom-6 right-0 z-10 shadow-xl">
-                    <div className="px-8 py-1.5 bg-white border-black border-2 rounded-full">
-                        {/* <span className="text-sm font-medium text-white">{member.position}</span> */}
-                        <span className="text-sm font-bold text-red-500">Co-Captain</span>
+                    <div className="px-4 md:px-8 py-1 md:py-1.5 bg-white border-black border-2 rounded-full">
+                        <span className="text-xs md:text-sm font-bold text-red-500">{member.position}</span>
                     </div>
                 </div>
             </div>
