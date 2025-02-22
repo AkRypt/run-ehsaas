@@ -8,9 +8,7 @@ import Header from '@/sections/Header';
 
 export default function Home() {
   return (
-    <main className="relative h-screen text-neutral">
-
-      <Header />
+    <main className="text-neutral">
 
       <HeroSection />
 

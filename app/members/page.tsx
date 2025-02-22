@@ -66,7 +66,6 @@ const Members = () => {
 
   return (
     <main className="overflow-hidden bg-neutral pb-40">
-      <Header />
 
       {/* Hero Section with E-board */}
       <section className="min-h-screen relative pt-20 px-4">

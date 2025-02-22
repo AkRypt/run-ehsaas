@@ -34,8 +34,6 @@ const GalleryPage = () => {
 
     return (
         <main className="min-h-screen bg-base-300">
-            <Header />
-
 
             <div className="py-20 px-4 md:px-8">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">

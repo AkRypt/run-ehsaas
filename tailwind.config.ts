@@ -12,6 +12,7 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        tertiary: "#333333"
       },
     },
   },
@@ -19,6 +20,7 @@ export default {
     themes: ["light"],
   },
   plugins: [
-    require('daisyui'),
+    require("@tailwindcss/typography"),
+    require("daisyui"),
   ],
 } satisfies Config;

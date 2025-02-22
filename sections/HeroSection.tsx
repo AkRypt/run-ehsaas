@@ -5,8 +5,8 @@ import Image from "next/image"
 
 const HeroSection = () => {
     return (
-        <section>
-            <div className="relative w-full h-screen">
+        <section className="relative w-full h-screen">
+            <div className="absolute w-full h-screen">
                 {/* Hero Image with Overlay */}
                 <Image
                     src="/images/ehsaas-hero.jpg"

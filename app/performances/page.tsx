@@ -97,7 +97,6 @@ const PerformancesPage = () => {
 
     return (
         <main className="min-h-screen bg-purple-500 pb-40">
-            <Header />
 
             {/* Title Section */}
             <div className="pt-32 px-8 md:px-24">

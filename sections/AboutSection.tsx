@@ -6,8 +6,7 @@ import { motion } from "framer-motion";
 const AboutSection = () => {
 
   return (
-    <section id="about" className="py-14 px-8 md:p-24">
-
+    <div id="about" className="relative py-14 px-8 md:p-24">
 
       {/* Content Grid */}
       <div className="grid md:grid-cols-12 gap-16">
@@ -53,7 +52,7 @@ const AboutSection = () => {
       </div>
 
 
-    </section >
+    </div >
   );
 };
 

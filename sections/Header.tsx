@@ -2,20 +2,22 @@
 
 import Logo from "@/app/components/Logo";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const Header = () => {
+    const pathname = usePathname();
     const [isHomePage, setisHomePage] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
-        const currentPath = window.location.pathname;
+        const currentPath = pathname;
         if (currentPath === "/") {
             setisHomePage(true);
         } else {
             setisHomePage(false);
         }
-    }, []);
+    }, [pathname]);
 
     // Close mobile menu when clicking outside
     useEffect(() => {
@@ -32,11 +34,11 @@ const Header = () => {
         { href: "/calendar", text: "Calendar" },
         { href: "/performances", text: "Performances" },
         { href: "/gallery", text: "Gallery" },
-        { href: "#contact", text: "Contact" },
+        { href: "#footer", text: "Contact" },
     ];
 
     return (
-        <header className={`relative w-full ${isHomePage ? "bg-transparent" : "bg-neutral"} top-0 right-0 z-50 px-8 py-6`}>
+        <header className={`w-full ${!isHomePage ? "relative bg-tertiary" : "absolute bg-transparent"} top-0 right-0 z-50 px-8 py-6`}>
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center justify-end space-x-12">
                 {navLinks.map((link) => (
