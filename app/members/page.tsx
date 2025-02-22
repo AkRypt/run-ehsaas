@@ -89,19 +89,20 @@ const Members = () => {
           </div>
 
           {/* Bottom rows - Other E-board members in hexagonal layout */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-20 space-y-10 px-2 md:max-w-[70%] mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-20 space-y-10 md:space-y-0 px-2 md:max-w-[70%] mx-auto">
             {eboard.slice(2).map((member, index) => (
               <motion.div
                 key={member.name}
-                initial={{ opacity: 0,  }}
+                // initial={{ opacity: 0,  }}
                 animate={{
-                  opacity: 1,
+                  // opacity: 1,
                   // y: [1, 4].includes(index) ? -30 : 0 // Middle card elevated
                 }}
-                transition={{ delay: (index + 2) * 0.2 }}
-                // className={`relative group ${index === 1 || index === 4 ? 'md:translate-y-12' : ''}`}
+                // transition={{ delay: (index + 2) * 0.2 }}
+                // className={`relative border group ${index === 1 || index === 4 ? 'md:translate-y-12' : ''}`}
               >
-                <EBoardCard member={member} />
+                {/* <EBoardCard member={member} /> */}
+                <CaptainCard member={member} />
               </motion.div>
             ))}
           </div>

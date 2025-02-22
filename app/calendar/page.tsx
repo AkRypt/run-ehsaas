@@ -25,6 +25,11 @@ const Calendar = () => {
     // Sample events (you can replace with your actual events data)
     const events = [
         {
+            date: "2024-02-15",
+            title: "Important Meeting",
+            image: "https://i.imgur.com/7l0K9bI.jpeg"
+        },
+        {
             date: "2024-03-15",
             title: "Important Meeting",
             image: "https://i.imgur.com/7l0K9bI.jpeg"
@@ -97,7 +102,7 @@ const Calendar = () => {
 
                         {/* Calendar days */}
                         {[...Array(getFirstDayOfMonth(currentMonth))].map((_, index) => (
-                            <div key={`empty-${index}`} className="relative aspect-square border flex items-center justify-center">
+                            <div key={`empty-${index}`} className="relative aspect-[3/4] md:aspect-square border flex items-center justify-center">
                                 {/* Diagonal slash */}
                                 <div className="absolute w-full h-0.5 bg-gray-200 transform -rotate-45"></div>
                                 <div className="absolute w-full h-0.5 bg-gray-200 transform rotate-45"></div>
@@ -107,22 +112,22 @@ const Calendar = () => {
                         {[...Array(getDaysInMonth(currentMonth))].map((_, index) => (
                             <div
                                 key={index + 1}
-                                className="aspect-square p-2 border hover:shadow-md transition-shadow
-                                         bg-white hover:bg-gray-50 relative"
+                                className="relative aspect-[3/4] md:aspect-square w-full h-full p-2 border hover:shadow-md transition-shadow
+                                         bg-white hover:bg-gray-50"
                             >
-                                <span className="absolute top-1 left-1 font-medium">{index + 1}</span>
+                                <span className="absolute top-0.5 left-1 text-xs md:font-medium">{index + 1}</span>
                                 {/* Event images would go here */}
-                                <div className="mt-6 flex flex-col gap-1">
+                                <div className="mt-3 md:mt-6 flex flex-col gap-1 h-[80%] rounded-lg overflow-hidden">
                                     {events.map((event, eventIndex) => {
                                         const eventDate = new Date(event.date);
                                         if (eventDate.getDate() === index + 1 &&
                                             eventDate.getMonth() === currentMonth.getMonth()) {
                                             return (
-                                                <div key={eventIndex} className="relative h-16">
+                                                <div key={eventIndex}>
                                                     <img
                                                         src={event.image}
                                                         alt={event.title}
-                                                        className="rounded-lg object-cover w-full h-full cursor-pointer 
+                                                        className="object-cover cursor-pointer 
                                                                  hover:opacity-90 transition-opacity"
                                                         onClick={() => setSelectedImage({
                                                             url: event.image,
