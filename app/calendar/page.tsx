@@ -3,7 +3,7 @@
 import Header from "@/sections/Header";
 import { useState } from "react";
 import ImageModal from "../components/ImageModal";
-import { bonheurRoyale, dancingScript, newsreader } from "../fonts";
+import { bonheurRoyale, borel, dancingScript, mrsSaintDelafield, newsreader, sedgwickAveDisplay, yellowtail } from "../fonts";
 
 const Calendar = () => {
 
@@ -45,9 +45,9 @@ const Calendar = () => {
 
 
     return (
-        <main className={`${dancingScript.className} overflow-hidden min-h-screen pb-40 bg-gradient-to-br from-purple-50 to-pink-50`}>
+        <main className={`${newsreader.className} overflow-hidden min-h-screen pb-40 bg-gradient-to-br from-red-50 to-white`}>
             <div className="py-8 px-10 md:px-20">
-                <h1 className={`${bonheurRoyale.className} text-6xl md:text-7xl text-center bg-gradient-to-r from-purple-600 to-pink-600 
+                <h1 className={`${bonheurRoyale.className} text-6xl md:text-7xl text-center bg-gradient-to-r from-red-600 to-red-400
                                text-transparent bg-clip-text animate-gradient`}>
                     Our Calendar
                 </h1>
@@ -74,7 +74,7 @@ const Calendar = () => {
                             Catch all our latest moves on{' '}
                             <a
                                 href="https://www.instagram.com/ehsaasdanceteam/"
-                                className="inline-block text-purple-500 hover:text-purple-600 font-bold 
+                                className="inline-block text-red-500 hover:text-red-600 font-bold 
                                          hover:scale-110 transform transition-all duration-200"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -94,23 +94,23 @@ const Calendar = () => {
 
 
             {/* Main Calendar Component */}
-            <div className="md:max-w-[70%] mx-auto mt-6 px-4">
-                <div className="bg-white/80 backdrop-blur-sm rounded-3xl md:shadow-xl p-2 md:p-8 border border-purple-100">
+            <div className={`${dancingScript.className} md:max-w-[70%] mx-auto mt-6 px-4`}>
+                <div className="bg-white/80 backdrop-blur-sm rounded-3xl md:shadow-xl p-2 md:p-8 border border-red-100">
                     {/* Month Navigation */}
                     <div className="flex justify-between items-center mb-8">
-                        <h2 className={`text-3xl md:text-4xl font-semibold text-purple-800`}>
+                        <h2 className={`text-3xl md:text-4xl font-semibold text-red-600`}>
                             {currentMonth.toLocaleString('default', { month: 'long', year: 'numeric' })}
                         </h2>
                         <div className="flex gap-4">
                             <button
                                 onClick={() => setCurrentMonth(new Date(currentMonth.setMonth(currentMonth.getMonth() - 1)))}
-                                className="p-3 rounded-full hover:bg-purple-100 transition-colors duration-200 text-purple-600"
+                                className="p-3 rounded-full hover:bg-red-100 transition-colors duration-200 text-red-600 text-4xl"
                             >
                                 ←
                             </button>
                             <button
                                 onClick={() => setCurrentMonth(new Date(currentMonth.setMonth(currentMonth.getMonth() + 1)))}
-                                className="p-3 rounded-full hover:bg-purple-100 transition-colors duration-200 text-purple-600"
+                                className="p-3 rounded-full hover:bg-red-100 transition-colors duration-200 text-red-600 text-4xl"
                             >
                                 →
                             </button>
@@ -121,7 +121,7 @@ const Calendar = () => {
                     <div className="grid grid-cols-7 gap-2">
                         {/* Week days */}
                         {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-                            <div key={day} className="text-center font-semibold text-purple-600 py-2 text-lg">
+                            <div key={day} className="text-center font-semibold text-red-600 py-2 text-lg">
                                 {day}
                             </div>
                         ))}
@@ -141,10 +141,10 @@ const Calendar = () => {
                                 key={index + 1}
                                 className="relative aspect-square w-full p-2 rounded-lg 
                                          hover:shadow-lg transition-all duration-50
-                                         bg-white hover:bg-purple-50 border border-purple-100
+                                         bg-white hover:bg-red-50 border border-red-100
                                          hover:scale-[1.02] transform"
                             >
-                                <span className="absolute top-2 left-2 text-xs md:text-lg font-medium text-purple-800">
+                                <span className="absolute top-2 left-2 text-xs md:text-lg font-medium text-red-500">
                                     {index + 1}
                                 </span>
                                 <div className="mt-4 md:mt-8 flex flex-col gap-1 h-[90%] md:h-[70%] rounded-lg overflow-hidden">
