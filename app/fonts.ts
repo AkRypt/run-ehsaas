@@ -1,5 +1,5 @@
 import { Geist, Geist_Mono, Mrs_Saint_Delafield, Bonheur_Royale, Borel, 
-    Yellowtail, Sedgwick_Ave_Display, Newsreader, Dancing_Script
+    Yellowtail, Sedgwick_Ave_Display, Newsreader, Dancing_Script, Poppins
 } from "next/font/google";
 
 export const geistSans = Geist({
@@ -50,6 +50,12 @@ export const newsreader = Newsreader({
 
 export const dancingScript = Dancing_Script({
     variable: "--font-dancing-script",
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
+});
+
+export const poppins = Poppins({
+    variable: "--font-poppins",
     subsets: ["latin"],
     weight: ["400", "500", "600", "700"],
 });

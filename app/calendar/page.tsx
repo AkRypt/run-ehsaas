@@ -45,13 +45,13 @@ const Calendar = () => {
 
 
     return (
-        <main className={`${newsreader.className} overflow-hidden min-h-screen pb-40 bg-gradient-to-br from-red-50 to-white`}>
+        <main className={`${newsreader.className} overflow-hidden min-h-screen pb-40 bg-gradient-to-br from-red-600 to-red-500`}>
             <div className="py-8 px-10 md:px-20">
-                <h1 className={`${bonheurRoyale.className} text-6xl md:text-7xl text-center bg-gradient-to-r from-red-600 to-red-400
+                <h1 className={`${bonheurRoyale.className} text-6xl md:text-7xl text-center bg-gradient-to-r from-white to-red-100
                                text-transparent bg-clip-text animate-gradient`}>
                     Our Calendar
                 </h1>
-                <p className="text-center text-gray-600 text-xl">
+                <p className="text-center text-gray-100 text-xl">
                     We've got some big events coming up, so make sure to mark your calendars!
                 </p>
             </div>
