@@ -16,6 +16,7 @@ const Logo = () => {
                     alt="Ehsaas Logo"
                     width={200}
                     height={200}
+                    priority
                     className="w-full h-full hover:opacity-100 z-10"
                 />
             </div>

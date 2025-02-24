@@ -1,6 +1,6 @@
 "use client";
 
-import { bonheurRoyale, geistMono } from "@/app/fonts";
+import { bonheurRoyale, borel, geistMono, mrsSaintDelafield, newsreader, poppins, sedgwickAveDisplay, yellowtail } from "@/app/fonts";
 import Image from "next/image"
 
 const HeroSection = () => {
@@ -24,7 +24,7 @@ const HeroSection = () => {
                 {/* Text Content */}
                 < h2 className={`${geistMono.className} text-2xl font-bold md:text-4xl text-white mb-4 text-center
                 [text-shadow:_3px_3px_0_rgb(220_38_38),_6px_6px_0_rgba(0,0,0,0.2)]
-                `}>RU - N</h2>
+                `}>RU-N</h2>
 
                 <h1 className={`${bonheurRoyale.className} text-5xl md:text-9xl font-bold text-white mb-4 text-center
                 [text-shadow:_3px_3px_0_rgb(220_38_38),_6px_6px_0_rgba(0,0,0,0.2)]
