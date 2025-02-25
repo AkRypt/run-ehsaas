@@ -39,25 +39,6 @@ const GalleryPage = () => {
     };
 
 
-    const images1 = [
-        // { url: "https://drive.usercontent.google.com/download?id=1UbJC2EpuhKx7Ne6exZUupHWpq57lZVHF", caption: "Caption 1" },
-        // { url: "https://drive.usercontent.google.com/download?id=1UbJC2EpuhKx7Ne6exZUupHWpq57lZVHF&authuser=1" },
-        // { url: "https://drive.google.com/uc?id=1UbJC2EpuhKx7Ne6exZUupHWpq57lZVHF" },
-        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg", caption: "Caption 3" },
-        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" },
-        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" },
-        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" },
-        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" },
-        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" },
-        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" },
-        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" },
-        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" },
-        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" },
-        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" },
-        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" },
-    ];
-
-
     const columns = [
         images?.filter((_: any, i: any) => i % 4 === 0),
         images?.filter((_: any, i: any) => i % 4 === 1),
@@ -80,7 +61,7 @@ const GalleryPage = () => {
                                 {column.map((image: any, imageIndex: any) => (
                                     <div
                                         key={`${columnIndex}-${imageIndex}`}
-                                        className="relative group"
+                                        className="relative group rounded-lg overflow-hidden"
                                     >
                                         <motion.img
                                             className="h-full max-w-full rounded-lg object-contain"
