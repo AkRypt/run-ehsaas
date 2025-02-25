@@ -12,15 +12,10 @@ const GalleryPage = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        // setImages(images1);
         fetchImages();
-        fetchDriveImages();
+        // fetchDriveImages();
     }, []);
-
-    const fetchDriveImages = async () => {
-        const response = await fetch('/api/drive/images');
-        const data = await response.json();
-        setImages(data);
-    };
 
     const fetchImages = async () => {
         try {
@@ -45,21 +40,21 @@ const GalleryPage = () => {
 
 
     const images1 = [
-        "https://drive.usercontent.google.com/download?id=1UbJC2EpuhKx7Ne6exZUupHWpq57lZVHF",
-        "https://drive.usercontent.google.com/download?id=1UbJC2EpuhKx7Ne6exZUupHWpq57lZVHF&authuser=1",
-        "https://drive.google.com/uc?id=1UbJC2EpuhKx7Ne6exZUupHWpq57lZVHF",
-        "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg",
-        "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg",
-        "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg",
-        "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg",
-        "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg",
-        "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg",
-        "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg",
-        "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg",
-        "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg",
-        "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg",
-        "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg",
-        "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg",
+        // { url: "https://drive.usercontent.google.com/download?id=1UbJC2EpuhKx7Ne6exZUupHWpq57lZVHF", caption: "Caption 1" },
+        // { url: "https://drive.usercontent.google.com/download?id=1UbJC2EpuhKx7Ne6exZUupHWpq57lZVHF&authuser=1" },
+        // { url: "https://drive.google.com/uc?id=1UbJC2EpuhKx7Ne6exZUupHWpq57lZVHF" },
+        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg", caption: "Caption 3" },
+        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" },
+        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" },
+        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" },
+        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" },
+        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" },
+        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" },
+        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" },
+        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" },
+        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" },
+        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" },
+        { url: "https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-11.jpg" },
     ];
 
 
@@ -73,7 +68,7 @@ const GalleryPage = () => {
     return (
         <main className="min-h-screen bg-base-300">
 
-<div className="py-20 px-4 md:px-8">
+            <div className="py-20 px-4 md:px-8">
                 {images.length === 0 ? (
                     <div className="text-center text-gray-500">
                         No images available
@@ -83,17 +78,16 @@ const GalleryPage = () => {
                         {columns.map((column, columnIndex) => (
                             <div key={columnIndex} className="grid gap-4">
                                 {column.map((image: any, imageIndex: any) => (
-                                    <div 
-                                        key={`${columnIndex}-${imageIndex}`} 
-                                        className="relative group cursor-pointer"
+                                    <div
+                                        key={`${columnIndex}-${imageIndex}`}
+                                        className="relative group"
                                     >
                                         <motion.img
-                                            className="h-full max-w-full rounded-lg"
+                                            className="h-full max-w-full rounded-lg object-contain"
                                             src={image.url}
                                             alt={image.caption || ""}
-                                            loading="lazy"
-                                            transition={{ 
-                                                duration: columnIndex * 0.2 + imageIndex * 0.1 
+                                            transition={{
+                                                duration: columnIndex * 0.2 + imageIndex * 0.1
                                             }}
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={{ opacity: 1, y: 0 }}
@@ -112,28 +106,6 @@ const GalleryPage = () => {
                     </div>
                 )}
             </div>
-
-            {/* <div className="py-20 px-4 md:px-8">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {columns.map((column, columnIndex) => (
-                        <div key={columnIndex} className="grid gap-4">
-                            {column.map((image, imageIndex) => (
-                                <div key={`${columnIndex}-${imageIndex}`} className="">
-                                    <motion.img
-                                        className="h-full max-w-full rounded-lg"
-                                        src={image}
-                                        alt=""
-                                        loading="lazy"
-                                        transition={{ duration: columnIndex * 0.2 + imageIndex * 0.1 }}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={{ opacity: 1, y: 0 }}
-                                    />
-                                </div>
-                            ))}
-                        </div>
-                    ))}
-                </div>
-            </div> */}
 
         </main>
     );

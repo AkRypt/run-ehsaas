@@ -7,11 +7,12 @@ import { collection, addDoc, getDocs, deleteDoc, doc } from "firebase/firestore"
 const GalleryEditor = () => {
     const [images, setImages] = useState<any[]>([]);
     const [newImageUrl, setNewImageUrl] = useState("");
+    const [caption, setCaption] = useState(""); // Add this state
     const [status, setStatus] = useState("");
 
     useEffect(() => {
-        // fetchImages();
-        fetchDriveImages();
+        fetchImages();
+        // fetchDriveImages();
     }, []);
 
     const fetchDriveImages = async () => {
@@ -32,7 +33,7 @@ const GalleryEditor = () => {
     const convertGoogleDriveUrl = (url: string) => {
         // Handle different Google Drive URL formats
         let fileId = "";
-        
+
         // Format 1: https://drive.google.com/file/d/{fileId}/view...
         if (url.includes("/file/d/")) {
             fileId = url.split("/file/d/")[1].split("/")[0];
@@ -59,16 +60,17 @@ const GalleryEditor = () => {
 
         try {
             const directUrl = convertGoogleDriveUrl(newImageUrl);
-            
+
             // Add image info to Firestore
             await addDoc(collection(db, "gallery"), {
                 url: directUrl,
                 originalUrl: newImageUrl, // Store original URL for reference
-                caption: "",
+                caption: caption,
                 uploadedAt: new Date().toISOString()
             });
 
             setNewImageUrl("");
+            setCaption("");
             setStatus("Image added successfully!");
             fetchImages();
         } catch (error) {
@@ -90,7 +92,7 @@ const GalleryEditor = () => {
         <div className="space-y-6">
             <div className="bg-white shadow rounded-lg p-6">
                 <h2 className="text-lg font-medium mb-4">Add New Image</h2>
-                
+
                 <form onSubmit={handleAddImage} className="space-y-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -115,6 +117,21 @@ const GalleryEditor = () => {
                         </div>
                     </div>
 
+                    {/* Add caption input field */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Image Caption (optional)
+                        </label>
+                        <input
+                            type="text"
+                            value={caption}
+                            onChange={(e) => setCaption(e.target.value)}
+                            placeholder="Add a caption for this image"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-red-500"
+                            maxLength={100}
+                        />
+                    </div>
+
                     <button
                         type="submit"
                         className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 transition-colors"
@@ -132,7 +149,7 @@ const GalleryEditor = () => {
 
             <div className="bg-white shadow rounded-lg p-6">
                 <h2 className="text-lg font-medium mb-4">Manage Gallery Images</h2>
-                
+
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {images.map((image) => (
                         <div key={image.id} className="relative group">
