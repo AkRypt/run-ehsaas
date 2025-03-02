@@ -1,23 +1,42 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { db } from "@/config";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
 import AboutEditor from "./editors/AboutEditor";
 import { getAuth, signOut } from "firebase/auth";
 import GalleryEditor from "./editors/GalleryEditor";
+import { useRouter, useSearchParams } from "next/navigation";
+import AchievementsEditor from "./editors/AchievementsEditor";
+import HighlightsEditor from "./editors/HighlightsEditor";
+import CalendarEditor from "./editors/CalendarEditor";
+import PerformancesEditor from "./editors/PerformancesEditor";
 
 const tabs = [
-    { id: 'about', label: 'About Section' },
+    { id: 'about', label: 'About' },
     { id: 'achievements', label: 'Achievements' },
     { id: 'highlights', label: 'Highlights' },
-    { id: 'timeline', label: 'Timeline' },
+    { id: 'calendar', label: 'Calendar' },
     { id: 'performances', label: 'Performances' },
     { id: 'gallery', label: 'Gallery' },
 ];
 
 const AdminDashboard = () => {
-    const [activeTab, setActiveTab] = useState('gallery');
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const [activeTab, setActiveTab] = useState(searchParams.get('tab') || 'about');
+
+    useEffect(() => {
+        // Update URL when activeTab changes
+        const newSearchParams = new URLSearchParams(searchParams);
+        newSearchParams.set('tab', activeTab);
+        router.push(`/admin?${newSearchParams.toString()}`);
+    }, [activeTab]);
+
+    useEffect(() => {
+        const tabFromUrl = searchParams.get('tab');
+        if (tabFromUrl && tabs.some(tab => tab.id === tabFromUrl)) {
+            setActiveTab(tabFromUrl);
+        }
+    }, [searchParams]);
 
     const handleLogout = async () => {
         const auth = getAuth();
@@ -28,18 +47,18 @@ const AdminDashboard = () => {
         switch (activeTab) {
             case 'about':
                 return <AboutEditor />;
-            // case 'achievements':
-            //     return <AchievementsEditor />;
-            // case 'highlights':
-            //     return <HighlightsEditor />;
-            // case 'timeline':
-            //     return <TimelineEditor />;
-            // case 'performances':
-            //     return <PerformancesEditor />;
+            case 'achievements':
+                return <AchievementsEditor />;
+            case 'highlights':
+                return <HighlightsEditor />;
+            case 'calendar':
+                return <CalendarEditor />;
+            case 'performances':
+                return <PerformancesEditor />;
             case 'gallery':
                 return <GalleryEditor />;
             default:
-                return null;
+                return <div>No editor selected</div>;
         }
     };
 
@@ -69,12 +88,12 @@ const AdminDashboard = () => {
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
                                 className={`
-                  whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm
-                  ${activeTab === tab.id
+                                    whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm
+                                    ${activeTab === tab.id
                                         ? 'border-red-500 text-red-600'
                                         : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                                     }
-                `}
+                                `}
                             >
                                 {tab.label}
                             </button>

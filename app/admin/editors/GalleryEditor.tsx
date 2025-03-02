@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { db } from "@/config";
 import { collection, addDoc, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { convertGoogleDriveUrl } from "@/utilities";
+import FormInput from "@/app/components/Form/FormInput";
 
 const GalleryEditor = () => {
     const [images, setImages] = useState<any[]>([]);
@@ -29,30 +31,6 @@ const GalleryEditor = () => {
         })));
     };
 
-    // Convert Google Drive sharing URL to direct image URL
-    const convertGoogleDriveUrl = (url: string) => {
-        // Handle different Google Drive URL formats
-        let fileId = "";
-
-        // Format 1: https://drive.google.com/file/d/{fileId}/view...
-        if (url.includes("/file/d/")) {
-            fileId = url.split("/file/d/")[1].split("/")[0];
-        }
-        // Format 2: https://drive.google.com/open?id={fileId}
-        else if (url.includes("?id=")) {
-            fileId = url.split("?id=")[1].split("&")[0];
-        }
-        // Format 3: Already a direct link
-        else if (url.includes("uc?id=")) {
-            return url;
-        }
-
-        if (!fileId) {
-            throw new Error("Invalid Google Drive URL");
-        }
-
-        return `https://drive.google.com/thumbnail?id=${fileId}&sz=w1000`;
-    };
 
     const handleAddImage = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -118,19 +96,13 @@ const GalleryEditor = () => {
                     </div>
 
                     {/* Add caption input field */}
-                    <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                            Image Caption (optional)
-                        </label>
-                        <input
-                            type="text"
-                            value={caption}
-                            onChange={(e) => setCaption(e.target.value)}
-                            placeholder="Add a caption for this image"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-1 focus:ring-red-500"
-                            maxLength={100}
-                        />
-                    </div>
+                    <FormInput
+                        label="Image Caption (optional)"
+                        value={caption}
+                        onChange={setCaption}
+                        placeholder="Add a caption for this image"
+                        maxLength={100}
+                    />
 
                     <button
                         type="submit"
