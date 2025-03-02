@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { db } from "@/config";
-import { collection, doc, getDoc, setDoc, deleteDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { extractYouTubeId } from "@/utilities";
 import DatePicker from "@/app/components/Form/DatePicker";
 import FormInput from "@/app/components/Form/FormInput";

@@ -9,9 +9,11 @@ import AchievementsEditor from "./editors/AchievementsEditor";
 import HighlightsEditor from "./editors/HighlightsEditor";
 import CalendarEditor from "./editors/CalendarEditor";
 import PerformancesEditor from "./editors/PerformancesEditor";
+import MembersEditor from "./editors/MembersEditor";
 
 const tabs = [
     { id: 'about', label: 'About' },
+    { id: 'members', label: 'Members' },
     { id: 'achievements', label: 'Achievements' },
     { id: 'highlights', label: 'Highlights' },
     { id: 'calendar', label: 'Calendar' },
@@ -47,6 +49,8 @@ const AdminDashboard = () => {
         switch (activeTab) {
             case 'about':
                 return <AboutEditor />;
+            case 'members':
+                return <MembersEditor />;
             case 'achievements':
                 return <AchievementsEditor />;
             case 'highlights':

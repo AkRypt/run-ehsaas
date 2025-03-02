@@ -1,14 +1,41 @@
 "use client";
 
-import Header from "@/sections/Header";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { db } from "@/config";
+import { collection, getDocs, query, orderBy } from "firebase/firestore";
 import ImageModal from "../components/ImageModal";
-import { bonheurRoyale, borel, dancingScript, mrsSaintDelafield, newsreader, sedgwickAveDisplay, yellowtail } from "../fonts";
+import { bonheurRoyale, dancingScript, newsreader } from "../fonts";
+
+interface CalendarEvent {
+    id: string;
+    date: string;
+    title: string;
+    description?: string;
+    image?: string;
+    uploadedAt: string;
+}
 
 const Calendar = () => {
-
     const [currentMonth, setCurrentMonth] = useState(new Date());
     const [selectedImage, setSelectedImage] = useState<{ url: string; title: string } | null>(null);
+    const [events, setEvents] = useState<CalendarEvent[]>([]);
+
+    useEffect(() => {
+        fetchEvents();
+    }, []);
+
+    const fetchEvents = async () => {
+        try {
+            const q = query(collection(db, "calendar"), orderBy("date", "asc"));
+            const querySnapshot = await getDocs(q);
+            setEvents(querySnapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            })) as CalendarEvent[]);
+        } catch (error) {
+            console.error("Error fetching events:", error);
+        }
+    };
 
     // Get days in month and first day of month
     const getDaysInMonth = (date: Date) => {
@@ -22,26 +49,6 @@ const Calendar = () => {
     const getLastDayOfMonth = (date: Date) => {
         return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
     };
-
-    // Sample events (you can replace with your actual events data)
-    const events = [
-        {
-            date: "2024-02-10",
-            title: "Important Meeting",
-            image: "https://i.imgur.com/7l0K9bI.jpeg"
-        },
-        {
-            date: "2024-02-15",
-            title: "Important Meeting",
-            image: "https://i.imgur.com/7l0K9bI.jpeg"
-        },
-        {
-            date: "2024-03-15",
-            title: "Important Meeting",
-            image: "https://i.imgur.com/7l0K9bI.jpeg"
-        },
-        // Add more events as needed
-    ];
 
 
     return (
@@ -151,19 +158,33 @@ const Calendar = () => {
                                     {events.map((event, eventIndex) => {
                                         const eventDate = new Date(event.date);
                                         if (eventDate.getDate() === index + 1 &&
-                                            eventDate.getMonth() === currentMonth.getMonth()) {
+                                            eventDate.getMonth() === currentMonth.getMonth() &&
+                                            eventDate.getFullYear() === currentMonth.getFullYear()) {
                                             return (
                                                 <div key={eventIndex} className="relative group">
-                                                    <img
-                                                        src={event.image}
-                                                        alt={event.title}
-                                                        className="w-full h-full object-cover rounded-lg cursor-pointer 
-                                                                 transition-all duration-300 group-hover:scale-105"
-                                                        onClick={() => setSelectedImage({
-                                                            url: event.image,
-                                                            title: event.title
-                                                        })}
-                                                    />
+                                                    {event.image ? (
+                                                        <img
+                                                            src={event.image}
+                                                            alt={event.title}
+                                                            className="w-full h-full object-cover rounded-lg cursor-pointer 
+                                 transition-all duration-300 group-hover:scale-105"
+                                                            onClick={() => setSelectedImage({
+                                                                url: event.image!,
+                                                                title: event.title
+                                                            })}
+                                                            onError={(e) => {
+                                                                const img = e.target as HTMLImageElement;
+                                                                img.src = '/images/placeholder.jpg';
+                                                            }}
+                                                        />
+                                                    ) : (
+                                                        <div className="w-full h-full bg-red-50 rounded-lg p-2">
+                                                            <p className="text-sm text-red-600 font-medium">{event.title}</p>
+                                                            {event.description && (
+                                                                <p className="text-xs text-red-400 mt-1">{event.description}</p>
+                                                            )}
+                                                        </div>
+                                                    )}
                                                 </div>
                                             );
                                         }

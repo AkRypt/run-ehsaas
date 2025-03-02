@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { db } from "@/config";
 import { collection, addDoc, getDocs, deleteDoc, doc, orderBy, query } from "firebase/firestore";
-import { convertGoogleDriveUrl, convertYouTubeUrl, extractYouTubeId } from "@/utilities";
+import { convertGoogleDriveUrl, extractYouTubeId } from "@/utilities";
 import FormInput from "@/app/components/Form/FormInput";
 import MediaUrlInput from "@/app/components/Form/MediaUrlInput";
 import FormTextArea from "@/app/components/Form/FormTextArea";
