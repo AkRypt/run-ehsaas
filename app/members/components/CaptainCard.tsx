@@ -16,6 +16,10 @@ const CaptainCard = ({ member }: { member: any }) => {
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover"
+                    onError={(e) => {
+                        const img = e.target as HTMLImageElement;
+                        img.src = '/images/placeholder.jpg';
+                    }}
                 />
             </div>
 

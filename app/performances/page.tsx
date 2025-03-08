@@ -58,12 +58,12 @@ const PerformancesPage = () => {
     }
 
     return (
-        <main className="min-h-screen bg-purple-500 pb-40">
+        <main className="min-h-screen text-black pb-40">
             <div className="pt-32 px-8 md:px-24">
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className={`${bonheurRoyale.className} text-5xl md:text-7xl text-white text-center mb-20`}
+                    className={`${bonheurRoyale.className} text-5xl md:text-7xl text-center mb-10`}
                 >
                     Our Performances
                 </motion.h1>
@@ -84,7 +84,7 @@ const PerformancesPage = () => {
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: "auto" }}
                                     exit={{ opacity: 0, height: 0 }}
-                                    className="relative max-w-7xl mx-auto"
+                                    className="relative w-[80%] mx-auto"
                                 >
                                     <div className={`grid gap-8 ${
                                         // Dynamic grid columns based on number of performances
@@ -116,7 +116,7 @@ const PerformancesPage = () => {
                                                     />
                                                 </div>
                                                 <motion.div
-                                                    className="mt-4 text-white"
+                                                    className="mt-4"
                                                     initial={{ opacity: 0 }}
                                                     animate={{ opacity: 1 }}
                                                     transition={{ delay: 0.2 + index * 0.1 }}

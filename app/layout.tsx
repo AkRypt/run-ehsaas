@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { geistMono, geistSans } from "./fonts";
-import Script from "next/script";
+import { montserrat } from "./fonts";
 import Header from "@/sections/Header";
 import { Footer } from "@/sections/Footer";
 
@@ -17,7 +16,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+            <body className={`${montserrat.className} antialiased`}>
                 <Header />
                 {children}
                 <Footer />

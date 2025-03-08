@@ -41,7 +41,7 @@ const GalleryPage = () => {
     };
 
     return (
-        <main className="min-h-screen bg-black">
+        <main className="min-h-screen pt-16 bg-black">
             <div className="pt-10 pb-40">
 
                 <div className="px-4 md:px-8">

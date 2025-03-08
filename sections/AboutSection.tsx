@@ -35,9 +35,13 @@ const AboutSection = () => {
         {/* Image Side */}
 
         <img
-          src="/images/ehsaas-hero.jpg"
+          src={content?.img}
           alt="Team Performance"
-          className="w-full h-full object-cover hidden md:block col-span-5 rounded-xl"
+          className="w-full h-full object-cover hidden md:block col-span-5 rounded-lg"
+          onError={(e) => {
+            const img = e.target as HTMLImageElement;
+            img.src = '/images/placeholder.jpg';
+          }}
         />
 
         {/* Text Content Side */}

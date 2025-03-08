@@ -1,6 +1,8 @@
 import FormInput from "@/app/components/Form/FormInput";
 import FormTextArea from "@/app/components/Form/FormTextArea";
+import MediaUrlInput from "@/app/components/Form/MediaUrlInput";
 import { db } from "@/config";
+import { convertGoogleDriveUrl } from "@/utilities";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
@@ -10,6 +12,7 @@ const AboutEditor = () => {
         subtitle: "",
         description1: "",
         description2: "",
+        img: "",
     });
     const [isSaving, setIsSaving] = useState(false);
     const [saveStatus, setSaveStatus] = useState("");
@@ -33,7 +36,11 @@ const AboutEditor = () => {
 
         try {
             const docRef = doc(db, "content", "about");
-            await updateDoc(docRef, aboutContent);
+            const contentToSave = {
+                ...aboutContent,
+                img: convertGoogleDriveUrl(aboutContent?.img)
+            };
+            await updateDoc(docRef, contentToSave);
             setSaveStatus("Content saved successfully!");
         } catch (error) {
             console.log(error);
@@ -50,6 +57,25 @@ const AboutEditor = () => {
 
 
             <div className="space-y-6">
+
+                <MediaUrlInput
+                    type="image"
+                    value={aboutContent?.img}
+                    onChange={(e) => setAboutContent({ ...aboutContent, img: e })}
+                    required
+                />
+
+                {/* Preview current image if exists */}
+                {aboutContent?.img && (
+                    <div className="relative w-full max-w-md">
+                        <img
+                            src={aboutContent.img}
+                            alt="About section"
+                            className="w-full h-48 object-cover rounded-lg"
+                        />
+                    </div>
+                )}
+
                 <FormInput
                     label="Title"
                     value={aboutContent?.title}

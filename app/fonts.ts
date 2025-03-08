@@ -1,16 +1,7 @@
-import { Geist, Geist_Mono, Mrs_Saint_Delafield, Bonheur_Royale, Borel, 
-    Yellowtail, Sedgwick_Ave_Display, Newsreader, Dancing_Script, Poppins
+import { Mrs_Saint_Delafield, Bonheur_Royale, Borel, 
+    Yellowtail, Sedgwick_Ave_Display, Newsreader, Dancing_Script, Poppins,
+    Montserrat, Montserrat_Alternates
 } from "next/font/google";
-
-export const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
-
-export const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
 
 export const mrsSaintDelafield = Mrs_Saint_Delafield({
     variable: "--font-mrs-saint-delafield",
@@ -59,3 +50,17 @@ export const poppins = Poppins({
     subsets: ["latin"],
     weight: ["400", "500", "600", "700"],
 });
+
+export const montserrat = Montserrat({
+    variable: "--font-montserrat",
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
+});
+
+
+export const montserratAlternates = Montserrat_Alternates({
+    variable: "--font-montserrat-alternates",
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700"],
+});
+

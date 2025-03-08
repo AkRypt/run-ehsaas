@@ -52,7 +52,7 @@ const Calendar = () => {
 
 
     return (
-        <main className={`${newsreader.className} overflow-hidden min-h-screen pb-40 bg-gradient-to-br from-red-600 to-red-500`}>
+        <main className={`${newsreader.className} overflow-hidden min-h-screen pb-40 pt-16 bg-gradient-to-br from-red-600 to-red-500`}>
             <div className="py-8 px-10 md:px-20">
                 <h1 className={`${bonheurRoyale.className} text-6xl md:text-7xl text-center bg-gradient-to-r from-white to-red-100
                                text-transparent bg-clip-text animate-gradient`}>
