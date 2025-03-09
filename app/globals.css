@@ -72,6 +72,34 @@ body {
   z-index: -1;
 }
 
+
+/* Add this after your existing styles */
+.smoke-container {
+  text-align: center;
+  /* background-image: url("/images/overlay.png"); */
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg) }
+  100% { transform: rotate(360deg) }
+}
+
+.smoke-circle {
+  border: 2px solid rgba(255,255,255,.1);
+  border-radius: 50%;
+  position: absolute;
+  margin: auto;
+}
+
+
+
 /* @keyframes neon-wave {
   0% {
       transform: rotate(0deg) scale(1);

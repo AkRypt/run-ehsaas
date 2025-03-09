@@ -6,6 +6,9 @@ import { bonheurRoyale } from "../fonts";
 import CaptainCard from "./components/CaptainCard";
 import { db } from "@/config";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import ElegantCard from "./components/ElegantCard";
+import V1CaptainCard from "./components/v1CaptainCard";
+import V2Card from "./components/V2Card";
 
 interface Member {
     id: string;
@@ -38,10 +41,10 @@ const Members = () => {
     };
 
     // Separate captains from other e-board members
-    const captains = eboardMembers.filter(member => 
+    const captains = eboardMembers.filter(member =>
         member.position.toLowerCase().includes('captain')
     );
-    const otherEboard = eboardMembers.filter(member => 
+    const otherEboard = eboardMembers.filter(member =>
         !member.position.toLowerCase().includes('captain')
     );
 
@@ -53,12 +56,38 @@ const Members = () => {
                 </h1>
 
                 <div className="flex flex-col items-center justify-center">
+
+                    {/* TYPES OF CARDS BELOW. NEED TO CHOOSE ONE */}
                     {/* Top row - Captains */}
                     <div className="flex justify-center gap-12 px-2 md:max-w-[50%] mb-40">
                         {captains.map((member, index) => (
                             <CaptainCard key={member.id} member={member} />
                         ))}
                     </div>
+
+
+                    <div className="flex justify-center gap-12 px-2 md:max-w-[50%] mb-40">
+                        {captains.map((member, index) => (
+                            <ElegantCard key={member.id} member={member} />
+                        ))}
+                    </div>
+
+
+                    <div className="flex justify-center gap-12 px-2 md:max-w-[50%] mb-40">
+                        {captains.map((member, index) => (
+                            <V1CaptainCard key={member.id} member={member} />
+                        ))}
+                    </div>
+
+
+                    <div className="flex justify-center gap-12 px-2 md:max-w-[50%] mb-40">
+                        {captains.map(member => (
+                            <V2Card key={member.id} member={member} />
+                        ))}
+                    </div>
+
+
+
 
                     {/* Bottom rows - Other E-board members */}
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-20 space-y-10 md:space-y-0 px-2 md:max-w-[70%] mx-auto">

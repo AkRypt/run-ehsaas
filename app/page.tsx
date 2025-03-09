@@ -7,7 +7,7 @@ import CompPictures from '@/sections/CompPictures';
 
 export default function Home() {
   return (
-    <main className="text-neutral">
+    <main className="text-neutral pb-20">
 
       <HeroSection />
 

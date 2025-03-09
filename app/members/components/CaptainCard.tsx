@@ -19,7 +19,7 @@ const CaptainCard = ({ member }: { member: any }) => {
                     onError={(e) => {
                         const img = e.target as HTMLImageElement;
                         img.src = '/images/placeholder.jpg';
-                    }}
+                      }}
                 />
             </div>
 

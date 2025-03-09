@@ -36,7 +36,7 @@ export const Footer = () => {
 
                         <a
                             href="mailto:ehsaasdance@gmail.com"
-                            className="inline-flex items-center text-2xl gap-2 px-8 py-4 rounded-full bg-white backdrop-blur-sm bg-opacity-20 hover:bg-opacity-30 transition-all duration-300 text-white font-medium group border border-white/30"
+                            className="inline-flex items-center text-xl md:text-2xl gap-2 px-8 py-4 rounded-full bg-white backdrop-blur-sm bg-opacity-20 hover:bg-opacity-30 transition-all duration-300 text-white font-medium group border border-white/30"
                         >
                             <FaEnvelope className="group-hover:rotate-12 transition-transform" />
                             ehsaasdance@gmail.com
