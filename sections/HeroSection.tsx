@@ -1,6 +1,6 @@
 "use client";
 
-import { bonheurRoyale, dancingScript, montserratAlternates } from "@/app/fonts";
+import { bangers, bonheurRoyale, cinzel, dancingScript, darumadropOne, domine, eduAUVicWaNtHand, indieFlower, marcellus, montserratAlternates, silkscreen } from "@/app/fonts";
 import Image from "next/image"
 import { useEffect, useRef, useState } from "react";
 
@@ -143,8 +143,7 @@ const HeroSection = () => {
                     className="object-cover"
                 /> */}
             {/* Gradient Overlay */}
-            {/* <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/70 to-red-900/60" /> */}
-            {/* </div > */}
+            {/* <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/70 to-red-900/60" /></div > */}
 
             {/* Content */}
             <div className="absolute inset-0 flex flex-col items-center justify-center px-4" >
@@ -153,10 +152,10 @@ const HeroSection = () => {
                 [text-shadow:_3px_3px_0_rgb(220_38_38),_6px_6px_0_rgba(0,0,0,0.2)]
                 `}>RU-N</h2>
 
-                <h1 className={`${bonheurRoyale.className} text-5xl md:text-9xl font-bold text-white mb-4 text-center
+                <h1 className={`${marcellus.className} text-5xl md:text-9xl font-bold text-white mb-4 text-center
                 [text-shadow:_3px_3px_0_rgb(220_38_38),_6px_6px_0_rgba(0,0,0,0.2)]
                 `}>
-                    EHSAAS
+                    ehsaas
                 </h1>
 
                 <p className={`${montserratAlternates.className} text-md md:text-2xl text-gray-200 max-w-2xl text-center mb-8 animate-slide-up-delayed`}>

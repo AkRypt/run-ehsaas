@@ -1,6 +1,6 @@
 import { bonheurRoyale, borel, sedgwickAveDisplay, yellowtail } from "@/app/fonts";
 
-const CaptainCard = ({ member }: { member: any }) => {
+const CartoonCard = ({ member }: { member: any }) => {
     return (
         <div className={`relative w-full bg-yellow-500 rounded-2xl p-1 backdrop-blur-sm ${sedgwickAveDisplay.className}`}>
             {/* School Badge */}
@@ -40,4 +40,4 @@ const CaptainCard = ({ member }: { member: any }) => {
     );
 };
 
-export default CaptainCard;
+export default CartoonCard;
